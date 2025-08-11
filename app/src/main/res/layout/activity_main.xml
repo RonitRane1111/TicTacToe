@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@drawable/gradient_background">
+
+    <!-- Game Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tic Tac Toe"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-condensed"
+        android:letterSpacing="0.1"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Scoreboard with Card View -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        app:cardBackgroundColor="#4D000000"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center">
+
+            <!-- Player X Score -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PLAYER X"
+                    android:textColor="@color/teal_200"
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/playerXScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="28sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <!-- Divider -->
+            <View
+                android:layout_width="1dp"
+                android:layout_height="40dp"
+                android:background="#4DFFFFFF"
+                android:layout_marginHorizontal="8dp"/>
+
+            <!-- Player O Score -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PLAYER O"
+                    android:textColor="@color/orange_200"
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/playerOScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="28sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Game Board with Neumorphic Design -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/boardContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        app:cardBackgroundColor="#1AFFFFFF"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="12dp">
+
+        <GridLayout
+            android:id="@+id/gridLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="3"
+            android:rowCount="3"
+            android:padding="8dp">
+
+            <!-- Buttons with neumorphic effect -->
+            <Button
+                android:id="@+id/button00"
+                style="@style/GameButton"
+                android:layout_width="wrap_content"
+                android:layout_margin="6dp" />
+            <Button android:id="@+id/button01" style="@style/GameButton" android:layout_margin="6dp"/>
+            <Button android:id="@+id/button02" style="@style/GameButton" android:layout_margin="6dp"/>
+
+            <Button android:id="@+id/button10" style="@style/GameButton" android:layout_margin="6dp"/>
+            <Button android:id="@+id/button11" style="@style/GameButton" android:layout_margin="6dp"/>
+            <Button android:id="@+id/button12" style="@style/GameButton" android:layout_margin="6dp"/>
+
+            <Button android:id="@+id/button20" style="@style/GameButton" android:layout_margin="6dp"/>
+            <Button android:id="@+id/button21" style="@style/GameButton" android:layout_margin="6dp"/>
+            <Button android:id="@+id/button22" style="@style/GameButton" android:layout_margin="6dp"/>
+        </GridLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Turn Status with Animation -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        app:cardBackgroundColor="#4D000000"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="4dp">
+
+        <TextView
+            android:id="@+id/statusText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Turn: Player X"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:padding="12dp"/>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Reset Button with Ripple Effect -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/resetButton"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset Game"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:cornerRadius="24dp"
+        app:strokeColor="@color/white"
+        app:strokeWidth="1dp"
+        app:rippleColor="@color/white_20"/>
+
+    <!-- Add some decorative elements -->
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/divider_dots"
+        app:tint="@color/white_50" />
+</LinearLayout>
